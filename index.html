@@ -14,6 +14,10 @@
 </head>
 <body>
   <a class="skip-link" href="#main">Skip to main content</a>
+  <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="sections-nav">
+    <span class="nav-toggle-label">Menu</span>
+    <span class="nav-toggle-bars" aria-hidden="true"><i></i><i></i></span>
+  </button>
 
   <header id="about" class="hero">
     <div class="wrap hero-grid">
@@ -35,7 +39,7 @@
     </div>
   </header>
 
-  <nav class="section-nav" aria-label="CV sections">
+  <nav id="sections-nav" class="section-nav" aria-label="CV sections">
     <div class="wrap">
       <a href="#about"><span>01</span>About me</a>
       <a href="#impact"><span>02</span>Selected impact</a>
@@ -43,9 +47,9 @@
       <a href="#capabilities"><span>04</span>Capabilities</a>
       <a href="#portfolio"><span>05</span>Portfolio</a>
       <a href="#education"><span>06</span>Education</a>
-      <div class="nav-contact" aria-hidden="true">
+      <div class="nav-contact">
         <p>Kyril Fionov</p>
-        <a href="mailto:fionov.k@gmail.com" tabindex="-1">fionov.k@gmail.com</a>
+        <a href="mailto:fionov.k@gmail.com">fionov.k@gmail.com</a>
       </div>
     </div>
   </nav>
@@ -288,5 +292,26 @@
       <a href="mailto:fionov.k@gmail.com">Get in touch</a>
     </div>
   </footer>
+  <script>
+    const navToggle = document.querySelector('.nav-toggle');
+    const sectionNav = document.querySelector('.section-nav');
+
+    function setMenu(open) {
+      document.body.classList.toggle('nav-open', open);
+      navToggle.setAttribute('aria-expanded', String(open));
+    }
+
+    navToggle.addEventListener('click', () => {
+      setMenu(navToggle.getAttribute('aria-expanded') !== 'true');
+    });
+
+    sectionNav.addEventListener('click', event => {
+      if (event.target.closest('a')) setMenu(false);
+    });
+
+    document.addEventListener('keydown', event => {
+      if (event.key === 'Escape') setMenu(false);
+    });
+  </script>
 </body>
 </html>
