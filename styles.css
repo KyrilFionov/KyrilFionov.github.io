@@ -41,12 +41,14 @@ a:focus-visible { outline: .2rem solid var(--accent); outline-offset: .2rem; }
 .skip-link:focus { transform: none; }
 
 .hero { padding: clamp(4.5rem, 11vw, 8rem) 0 3.5rem; background: var(--black); border-top: .45rem solid var(--white); }
-.hero-grid { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 4rem; align-items: end; }
+.hero-grid { display: grid; grid-template-columns: minmax(0, 1fr) auto auto; gap: clamp(2rem, 5vw, 4rem); align-items: end; }
 .eyebrow { margin: 0 0 .65rem; color: var(--brand); font-size: .78rem; font-weight: 750; letter-spacing: .13em; text-transform: uppercase; }
 h1, h2, h3, h4, p { margin-top: 0; }
 h1 { max-width: 10ch; margin-bottom: .75rem; font-size: clamp(3.2rem, 9vw, 6.5rem); line-height: .92; letter-spacing: -.06em; }
 .positioning { max-width: 45rem; margin-bottom: 1.4rem; color: var(--brand); font-size: clamp(1.05rem, 2vw, 1.35rem); font-weight: 700; line-height: 1.4; }
 .intro { max-width: 46rem; margin: 0; color: var(--muted); font-size: 1.08rem; }
+.portrait { width: clamp(8.5rem, 14vw, 11.5rem); margin: 0; }
+.portrait img { display: block; width: 100%; height: auto; aspect-ratio: 4 / 5; object-fit: cover; object-position: center top; filter: grayscale(100%); border: 1px solid #454545; }
 .contact { display: grid; gap: .35rem; min-width: 11rem; padding-bottom: .3rem; color: var(--muted); font-style: normal; }
 .contact a { font-weight: 650; text-decoration: none; }
 
@@ -115,6 +117,7 @@ footer a { color: var(--white); font-weight: 700; }
 
 @media (max-width: 56rem) {
   .hero-grid { grid-template-columns: 1fr; gap: 2rem; }
+  .portrait { width: 9rem; }
   .impact-grid { grid-template-columns: repeat(2, 1fr); }
   .role { grid-template-columns: 1fr; gap: .7rem; }
   .role > p, .role > ul { grid-column: 1; }
@@ -144,6 +147,7 @@ footer a { color: var(--white); font-weight: 700; }
   .wrap { width: 100%; }
   .hero { padding: 0 0 8mm; border-top: 0; background: none; }
   .hero-grid { grid-template-columns: 1fr auto; gap: 10mm; }
+  .portrait { display: none; }
   h1 { font-size: 30pt; }
   .positioning { font-size: 11pt; }
   .intro { font-size: 9.5pt; }
