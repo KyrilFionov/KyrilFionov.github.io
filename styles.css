@@ -8,6 +8,7 @@
   --white: #fff;
   --black: #080808;
   --measure: 74rem;
+  --page-max: 105rem;
 }
 
 * { box-sizing: border-box; }
@@ -131,12 +132,12 @@ footer .wrap { display: flex; justify-content: space-between; gap: 2rem; }
 footer p { margin: 0; }
 footer a { color: var(--white); font-weight: 700; }
 
-@media (min-width: 70rem) {
+@media (min-width: 75rem) {
   .hero .wrap,
   main.wrap,
   footer .wrap {
-    width: min(calc(100% - 24rem), 58rem);
-    margin-left: max(2rem, calc((100vw - var(--measure)) / 2));
+    width: min(calc(75vw - 3rem), 76rem);
+    margin-left: max(1.5rem, calc((100vw - var(--page-max)) / 2 + 1.5rem));
     margin-right: auto;
   }
 
@@ -146,8 +147,9 @@ footer a { color: var(--white); font-weight: 700; }
   .section-nav {
     position: fixed;
     top: clamp(6rem, 16vh, 10rem);
-    right: max(2rem, calc((100vw - var(--measure)) / 2));
-    width: 18rem;
+    right: auto;
+    left: max(calc(75vw + 1rem), calc((100vw - var(--page-max)) / 2 + 79.75rem));
+    width: min(calc(25vw - 2rem), 23.75rem);
     border: 0;
     background: transparent;
     backdrop-filter: none;
@@ -164,6 +166,7 @@ footer a { color: var(--white); font-weight: 700; }
   .nav-contact a { padding: 0; color: var(--muted); font-size: .78rem; font-weight: 400; text-transform: none; letter-spacing: 0; }
   .nav-contact a::before { display: none; }
 
+  #about,
   main > section { scroll-margin-top: 2rem; }
 }
 
