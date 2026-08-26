@@ -55,6 +55,10 @@ h1 { max-width: 10ch; margin-bottom: .75rem; font-size: clamp(3.2rem, 9vw, 6.5re
 .section-nav { position: sticky; z-index: 5; top: 0; border-block: 1px solid var(--line); background: rgb(8 8 8 / 92%); backdrop-filter: blur(8px); }
 .section-nav .wrap { display: flex; gap: 1.4rem; overflow-x: auto; }
 .section-nav a { padding: .8rem 0; color: var(--muted); font-size: .84rem; font-weight: 750; text-decoration: none; text-transform: uppercase; letter-spacing: .06em; white-space: nowrap; }
+.section-nav a span { display: inline-block; width: 2rem; color: #6f6f6f; font-weight: 400; }
+.section-nav a:hover span,
+.section-nav a:focus-visible span { color: var(--accent); }
+.nav-contact { display: none; }
 
 main > section { padding: clamp(4rem, 8vw, 7rem) 0; border-bottom: 1px solid var(--line); }
 .section-heading { margin-bottom: 2rem; }
@@ -85,10 +89,13 @@ h3 { line-height: 1.25; }
 .impact-card dd { margin: .15rem 0 0; color: rgb(255 255 255 / 82%); font-size: .84rem; line-height: 1.5; }
 
 .company + .company { margin-top: 4.5rem; }
+.company { position: relative; padding-left: 2rem; }
+.company::before { content: ""; position: absolute; left: 0; top: 0; bottom: 0; border-left: 1px solid var(--line); }
 .company-heading { display: flex; justify-content: space-between; gap: 2rem; padding-bottom: .85rem; border-bottom: .2rem solid var(--white); }
 .company-heading h3 { margin: 0; font-size: 1.65rem; }
 .company-heading p { margin: 0; color: var(--muted); }
-.role { display: grid; grid-template-columns: 18rem minmax(0, 1fr); gap: 2.5rem; padding: 2.25rem 0; border-bottom: 1px solid var(--line); }
+.role { display: grid; position: relative; grid-template-columns: 18rem minmax(0, 1fr); gap: 2.5rem; padding: 2.25rem 0; border-bottom: 1px solid var(--line); }
+.role::before { content: ""; position: absolute; width: .55rem; height: .55rem; left: -2.31rem; top: 2.65rem; background: var(--black); border: 1px solid var(--white); border-radius: 50%; }
 .role-heading h4 { margin-bottom: .4rem; font-size: 1.08rem; line-height: 1.35; }
 .role-heading p, .role > p { color: var(--muted); }
 .role > p, .role > ul { grid-column: 2; }
@@ -115,6 +122,42 @@ footer .wrap { display: flex; justify-content: space-between; gap: 2rem; }
 footer p { margin: 0; }
 footer a { color: var(--white); font-weight: 700; }
 
+@media (min-width: 70rem) {
+  .hero .wrap,
+  main.wrap,
+  footer .wrap {
+    width: min(calc(100% - 24rem), 58rem);
+    margin-left: max(2rem, calc((100vw - var(--measure)) / 2));
+    margin-right: auto;
+  }
+
+  .hero-grid { grid-template-columns: minmax(0, 1fr) 10rem; align-items: center; }
+  .hero .contact { grid-column: 1 / -1; display: flex; flex-wrap: wrap; gap: .5rem 1.5rem; padding-top: 1rem; border-top: 1px solid var(--line); }
+
+  .section-nav {
+    position: fixed;
+    top: clamp(6rem, 16vh, 10rem);
+    right: max(2rem, calc((100vw - var(--measure)) / 2));
+    width: 18rem;
+    border: 0;
+    background: transparent;
+    backdrop-filter: none;
+  }
+
+  .section-nav::before { content: ""; position: absolute; top: 0; bottom: 0; left: 0; border-left: 1px solid var(--line); }
+  .section-nav .wrap { display: grid; width: 100%; gap: 0; overflow: visible; }
+  .section-nav a { position: relative; padding: .55rem 0 .55rem 1.5rem; font-size: 1rem; }
+  .section-nav a::before { content: ""; position: absolute; top: 0; bottom: 0; left: 0; border-left: 1px solid var(--white); transform: scaleY(0); transition: transform .18s ease; }
+  .section-nav a:hover::before,
+  .section-nav a:focus-visible::before { transform: scaleY(1); }
+  .nav-contact { display: block; padding: 3rem 0 0 3.5rem; color: var(--muted); font-size: .78rem; }
+  .nav-contact p { margin-bottom: .25rem; color: var(--white); font-weight: 700; text-transform: uppercase; letter-spacing: .08em; }
+  .nav-contact a { padding: 0; color: var(--muted); font-size: .78rem; font-weight: 400; text-transform: none; letter-spacing: 0; }
+  .nav-contact a::before { display: none; }
+
+  main > section { scroll-margin-top: 2rem; }
+}
+
 @media (max-width: 56rem) {
   .hero-grid { grid-template-columns: 1fr; gap: 2rem; }
   .portrait { width: 9rem; }
@@ -129,6 +172,8 @@ footer a { color: var(--white); font-weight: 700; }
   .impact-grid, .capability-grid, .closing-grid { grid-template-columns: 1fr; }
   .impact-card { min-height: 14rem; }
   .company-heading, footer .wrap { display: block; }
+  .company { padding-left: 1.25rem; }
+  .role::before { left: -1.56rem; }
   .company-heading p, footer a { display: inline-block; margin-top: .5rem; }
   .language-list li { display: grid; }
   .language-list span { text-align: left; }
