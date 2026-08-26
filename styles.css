@@ -47,8 +47,8 @@ h1, h2, h3, h4, p { margin-top: 0; }
 h1 { max-width: 10ch; margin-bottom: .75rem; font-size: clamp(3.2rem, 9vw, 6.5rem); line-height: .92; letter-spacing: -.06em; }
 .positioning { max-width: 45rem; margin-bottom: 1.4rem; color: var(--brand); font-size: clamp(1.05rem, 2vw, 1.35rem); font-weight: 700; line-height: 1.4; }
 .intro { max-width: 46rem; margin: 0; color: var(--muted); font-size: 1.08rem; }
-.portrait { width: clamp(8.5rem, 14vw, 11.5rem); margin: 0; }
-.portrait img { display: block; width: 100%; height: auto; aspect-ratio: 4 / 5; object-fit: cover; object-position: center top; filter: grayscale(100%); border: 1px solid #454545; }
+.portrait { width: 13.125rem; margin: 0 0 2rem; }
+.portrait img { display: block; width: 100%; height: auto; aspect-ratio: 21 / 25; object-fit: cover; object-position: center top; border: 1px solid #454545; }
 .contact { display: grid; gap: .35rem; min-width: 11rem; padding-bottom: .3rem; color: var(--muted); font-style: normal; }
 .contact a { font-weight: 650; text-decoration: none; }
 
@@ -109,6 +109,15 @@ h3 { line-height: 1.25; }
 .capability-grid p { margin: 0; color: var(--muted); }
 .capability-note { margin: 1rem 0 0; padding: 1.1rem 1.25rem; color: var(--muted); background: var(--surface); }
 
+.portfolio-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px; background: var(--line); border: 1px solid var(--line); }
+.portfolio-card { display: flex; min-height: 17rem; padding: 1.5rem; color: var(--white); background: var(--black); flex-direction: column; text-decoration: none; transition: background-color .2s ease, color .2s ease; }
+.portfolio-card:hover,
+.portfolio-card:focus-visible { color: var(--white); background: var(--surface); text-decoration: none; }
+.portfolio-index { color: var(--accent); font-size: .7rem; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; }
+.portfolio-card h3 { margin: auto 0 .75rem; font-size: 1.55rem; text-transform: uppercase; }
+.portfolio-card p { margin-bottom: 1.5rem; color: var(--muted); font-size: .85rem; }
+.portfolio-link { font-size: .78rem; font-weight: 700; }
+
 .closing-grid { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(3rem, 10vw, 9rem); }
 .education-item + .education-item { margin-top: 1.5rem; }
 .education-item h3 { margin-bottom: .25rem; font-size: 1rem; }
@@ -131,7 +140,7 @@ footer a { color: var(--white); font-weight: 700; }
     margin-right: auto;
   }
 
-  .hero-grid { grid-template-columns: minmax(0, 1fr) 10rem; align-items: center; }
+  .hero-grid { grid-template-columns: 1fr; align-items: start; }
   .hero .contact { grid-column: 1 / -1; display: flex; flex-wrap: wrap; gap: .5rem 1.5rem; padding-top: 1rem; border-top: 1px solid var(--line); }
 
   .section-nav {
@@ -162,6 +171,7 @@ footer a { color: var(--white); font-weight: 700; }
   .hero-grid { grid-template-columns: 1fr; gap: 2rem; }
   .portrait { width: 9rem; }
   .impact-grid { grid-template-columns: repeat(2, 1fr); }
+  .portfolio-grid { grid-template-columns: 1fr; }
   .role { grid-template-columns: 1fr; gap: .7rem; }
   .role > p, .role > ul { grid-column: 1; }
 }
@@ -205,6 +215,9 @@ footer a { color: var(--white); font-weight: 700; }
   .metric { margin-bottom: 3mm; color: #000; font-size: 14pt; }
   .impact-card > p:not(.metric) { color: #333; font-size: 8pt; }
   .impact-card details { display: none; }
+  .portfolio-grid { grid-template-columns: repeat(3, 1fr); }
+  .portfolio-card { min-height: 0; padding: 4mm; color: #000; background: none; }
+  .portfolio-card p, .portfolio-index { color: #333; }
   .company + .company { margin-top: 8mm; }
   .role { grid-template-columns: 48mm 1fr; gap: 6mm; padding: 4mm 0; break-inside: avoid; }
   .capability-grid > div { padding: 4mm; break-inside: avoid; }
